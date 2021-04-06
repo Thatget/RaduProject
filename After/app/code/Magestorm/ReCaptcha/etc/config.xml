@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<magestorm_recaptcha translate="label">
+			<setting>
+				<forms_area>
+					<user_create>
+						<label>Register</label>
+					</user_create>
+					<user_login>
+						<label>Login</label>
+					</user_login>
+					<user_forgotpassword>
+						<label>Forgot password</label>
+					</user_forgotpassword>
+					<email_friend>
+						<label>Email to friend</label>
+					</email_friend>
+					<contact_us>
+						<label>Contact Us</label>
+					</contact_us>
+					<review_product>
+						<label>Review Product Form</label>
+					</review_product>
+				</forms_area>
+				<forms>user_login, mini_login</forms>
+				<captcha_type>default</captcha_type>
+			</setting>
+		</magestorm_recaptcha>
+	</default>
+</config>

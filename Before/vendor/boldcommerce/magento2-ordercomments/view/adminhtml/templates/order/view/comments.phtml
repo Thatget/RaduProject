@@ -1,0 +1,25 @@
+<div class="admin__page-section-content" id="new_comment" style="
+    font-size: 1.2rem;
+    list-style: none;
+    margin: 0 0 2.4rem;
+    margin: 0 0 0.5rem;
+">
+
+   <?php echo implode(' ',$block->getBackOrderComment()); ?>
+   
+    <?php if($comment = $block->getOrderComment()):?>
+
+    <?php echo nl2br($block->escapeHtml($comment));?>
+   
+    <?php endif; ?>
+</div>
+    <script>
+        /* require([
+            'jquery',
+            'accordion'  // the alias for "mage/accordion"
+        ], function ($) {
+            $(function () { // to ensure that code evaluates on page load
+                $('#new_comment').appendTo($('.note-list'));
+            });
+        });  */
+    </script>

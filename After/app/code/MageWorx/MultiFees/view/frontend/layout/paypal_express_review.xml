@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageWorx_MultiFees::css/paypal.css"/>
+    </head>
+    <body>
+        <referenceBlock name="content">
+            <block class="MageWorx\MultiFees\Block\Cart\ProductFeeData" name="mageworx_product_fee_data" after="-" cacheable="false" template="MageWorx_MultiFees::info/product_fee_data.phtml"/>
+        </referenceBlock>
+        <referenceBlock name="additional.product.info">
+            <block class="MageWorx\MultiFees\Block\Cart\ProductFeeInfo" name="sales.order.mageworx.product.info"/>
+            <block class="MageWorx\MultiFees\Block\Catalog\Product\Fee"
+                   name="mageworx.multifees.productfee"
+                   template="MageWorx_MultiFees::cart/product_fee.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="mageworx-product-fee-form-container" xsi:type="array">
+                                <item name="component" xsi:type="string">MageWorx_MultiFees/js/view/mageworx-fee-form-paypal</item>
+                                <item name="provider" xsi:type="string">checkoutProvider</item>
+                                <item name="dataName" xsi:type="string">mageworxProductFeeForm</item>
+                                <item name="feeType" xsi:type="string">4</item>
+                                <item name="feesFieldsetName" xsi:type="string">mageworx-product-fee-form-fieldset</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">MageWorx_MultiFees/mageworx-product-fee-form</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="mageworx-product-fee-form-fieldset" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">mageworx-fee-form-fields</item>
+                                        <item name="children" xsi:type="array">
+                                            <!-- Wee add fields in LayoutProccessor class -->
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="paypal.additional.actions">
+            <block class="MageWorx\MultiFees\Block\PayPal\Express\FeesData"
+                   template="MageWorx_MultiFees::paypal/express/fees_data.phtml"
+                   name="pay_pal.express.fees_data"
+                   as="fees_data"
+                   after="paypal.cart.coupon"
+            />
+            <block class="MageWorx\MultiFees\Block\PayPal\Express\CartFees"
+                   name="mageworx_checkout_cart_fee_data"
+                   after="paypal.cart.coupon"
+                   cacheable="false"
+                   template="MageWorx_MultiFees::paypal/express/cart_fee.phtml"
+            >
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="mageworx-fee-form-container" xsi:type="array">
+                                <item name="component" xsi:type="string">MageWorx_MultiFees/js/view/mageworx-fee-form-paypal</item>
+                                <item name="provider" xsi:type="string">checkoutProvider</item>
+                                <item name="dataName" xsi:type="string">mageworxFeeForm</item>
+                                <item name="feeType" xsi:type="string">1</item>
+                                <item name="feesFieldsetName" xsi:type="string">mageworx-fee-form-fieldset</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">MageWorx_MultiFees/mageworx-fee-form-paypal</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="mageworx-fee-form-fieldset" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">mageworx-fee-form-fields</item>
+                                        <item name="children" xsi:type="array">
+                                            <!-- Wee add fields in LayoutProccessor class -->
+                                        </item>
+                                    </item>
+                                    <item name="errors" xsi:type="array">
+                                        <item name="sortOrder" xsi:type="string">0</item>
+                                        <item name="component" xsi:type="string">MageWorx_MultiFees/js/view/fee-messages</item>
+                                        <item name="displayArea" xsi:type="string">messages</item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="checkoutProvider" xsi:type="array">
+                                <item name="component" xsi:type="string">uiComponent</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+            <block class="MageWorx\MultiFees\Block\PayPal\Express\ShippingFees"
+                   name="mageworx_checkout_shipping_fee_data"
+                   after="paypal.cart.coupon"
+                   cacheable="false"
+                   template="MageWorx_MultiFees::paypal/express/shipping_fee.phtml"
+            >
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="mageworx-shipping-fee-form-container" xsi:type="array">
+                                <item name="component" xsi:type="string">MageWorx_MultiFees/js/view/mageworx-fee-form-paypal</item>
+                                <item name="provider" xsi:type="string">checkoutProvider</item>
+                                <item name="dataName" xsi:type="string">mageworxShippingFeeForm</item>
+                                <item name="feeType" xsi:type="string">3</item>
+                                <item name="feesFieldsetName" xsi:type="string">mageworx-shipping-fee-form-fieldset</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">MageWorx_MultiFees/mageworx-fee-form-paypal</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="mageworx-shipping-fee-form-fieldset" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">mageworx-fee-form-fields</item>
+                                        <item name="children" xsi:type="array">
+                                            <!-- Wee add fields in LayoutProccessor class -->
+                                        </item>
+                                    </item>
+                                    <item name="errors" xsi:type="array">
+                                        <item name="sortOrder" xsi:type="string">0</item>
+                                        <item name="component" xsi:type="string">MageWorx_MultiFees/js/view/fee-messages</item>
+                                        <item name="displayArea" xsi:type="string">messages</item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="checkoutProvider" xsi:type="array">
+                                <item name="component" xsi:type="string">uiComponent</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+            <block class="MageWorx\MultiFees\Block\PayPal\Express\PaymentFees"
+                   name="mageworx_checkout_payment_fee_data"
+                   after="paypal.cart.coupon"
+                   cacheable="false"
+                   template="MageWorx_MultiFees::paypal/express/payment_fee.phtml"
+            >
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="mageworx-payment-fee-form-container" xsi:type="array">
+                                <item name="component" xsi:type="string">MageWorx_MultiFees/js/view/mageworx-fee-form-paypal</item>
+                                <item name="provider" xsi:type="string">checkoutProvider</item>
+                                <item name="dataName" xsi:type="string">mageworxPaymentFeeForm</item>
+                                <item name="feeType" xsi:type="string">2</item>
+                                <item name="feesFieldsetName" xsi:type="string">mageworx-payment-fee-form-fieldset</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">MageWorx_MultiFees/mageworx-fee-form-paypal</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="mageworx-payment-fee-form-fieldset" xsi:type="array">
+                                        <item name="component" xsi:type="string">uiComponent</item>
+                                        <item name="displayArea" xsi:type="string">mageworx-fee-form-fields</item>
+                                        <item name="children" xsi:type="array">
+                                            <!-- Wee add fields in LayoutProccessor class -->
+                                        </item>
+                                    </item>
+                                    <item name="errors" xsi:type="array">
+                                        <item name="sortOrder" xsi:type="string">0</item>
+                                        <item name="component" xsi:type="string">MageWorx_MultiFees/js/view/fee-messages</item>
+                                        <item name="displayArea" xsi:type="string">messages</item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="checkoutProvider" xsi:type="array">
+                                <item name="component" xsi:type="string">uiComponent</item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

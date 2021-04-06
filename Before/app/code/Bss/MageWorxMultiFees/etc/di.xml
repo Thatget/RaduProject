@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="MageWorx\MultiFees\Helper\Fee" type="Bss\MageWorxMultiFees\Helper\Fee" />
+    <preference for="MageWorx\MultiFees\Model\Fee\Source\AppliedTotals"
+        type="Bss\MageWorxMultiFees\Model\Fee\Source\AppliedTotals" />
+    <preference for="MageWorx\MultiFees\Helper\Price" type="Bss\MageWorxMultiFees\Helper\Price" />
+    <preference for="MageWorx\MultiFees\Model\FeeCollectionManager" type="Bss\MageWorxMultiFees\Model\FeeCollectionManager" />
+    <preference for="MageWorx\MultiFees\Model\ShippingFee" type="Bss\MageWorxMultiFees\Model\ShippingFee" />
+
+    <preference for="MageWorx\MultiFees\Block\Totals\Order\Fee" type="Bss\MageWorxMultiFees\Block\Totals\Order\Fee" />
+    <preference for="MageWorx\MultiFees\Block\Totals\Invoice\Fee"
+    	type="Bss\MageWorxMultiFees\Block\Totals\Invoice\Fee" />
+    <preference for="MageWorx\MultiFees\Block\Totals\Creditmemo\Fee"
+    	type="Bss\MageWorxMultiFees\Block\Totals\Creditmemo\Fee" />
+    <preference for="Magento\Sales\Model\Order\Email\Sender\InvoiceSender"
+        type="Bss\MageWorxMultiFees\Model\Order\Email\Sender\InvoiceSender" />
+    <preference for="Magento\Sales\Model\Order\Email\Sender\InvoiceCommentSender"
+        type="Bss\MageWorxMultiFees\Model\Order\Email\Sender\InvoiceCommentSender" />
+    <preference for="Magento\Sales\Model\Order\Email\Sender\ShipmentSender"
+        type="Bss\MageWorxMultiFees\Model\Order\Email\Sender\ShipmentSender" />
+    <preference for="Magento\Sales\Model\Order\Email\Sender\ShipmentCommentSender"
+        type="Bss\MageWorxMultiFees\Model\Order\Email\Sender\ShipmentCommentSender" />
+    <preference for="Magento\Sales\Model\Order\Email\Sender\OrderSender"
+        type="Bss\MageWorxMultiFees\Model\Order\Email\Sender\OrderSender" />
+    <preference for="Magento\Sales\Model\Order\Email\Sender\OrderCommentSender"
+        type="Bss\MageWorxMultiFees\Model\Order\Email\Sender\OrderCommentSender" />  
+    <preference for="Magento\Sales\Model\Order\Email\Sender\CreditmemoSender"
+        type="Bss\MageWorxMultiFees\Model\Order\Email\Sender\CreditmemoSender" />
+    <preference for="Magento\Sales\Model\Order\Pdf\Invoice"
+        type="Bss\MageWorxMultiFees\Model\Order\Pdf\Invoice" />
+    <preference for="MageWorx\MultiFees\Model\Total\Pdf\Fee"
+        type="Bss\MageWorxMultiFees\Model\Total\Pdf\Fee" />
+    <preference for="Magento\Sales\Model\Order\Pdf\Shipment"
+        type="Bss\MageWorxMultiFees\Model\Order\Pdf\Shipment" />
+    <preference for="Magento\Sales\Model\Order\Pdf\Creditmemo"
+        type="Bss\MageWorxMultiFees\Model\Order\Pdf\Creditmemo" />
+    <type name="Magento\Customer\Controller\Account\CreatePost">
+        <plugin name="Mageplaza-yourmodule-product-block" type="Bss\MageWorxMultiFees\Rewrite\Magento\Customer\Controller\Account\CreatePost" sortOrder="5" />
+    </type>
+    <preference for="Magento\Customer\Model\EmailNotification" 
+        type="Bss\MageWorxMultiFees\Rewrite\Magento\Customer\Model\EmailNotification" />
+</config>

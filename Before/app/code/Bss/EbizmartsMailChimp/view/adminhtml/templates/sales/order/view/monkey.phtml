@@ -1,0 +1,39 @@
+<?php //if ($block->isReferred()): ?>
+	<section class="admin__page-section">
+	    <div class="admin__page-section-title">
+	        <span class="title"><?= __('MailChimp') ?></span>
+	    </div>
+	    <div id="mailchimp_monkey">
+	        <table class="form-list" cellspacing="0">
+	            <tr>
+	                <td class="label">
+	                    <img src="<?= $block->getFreddieImage(); ?>" width="40"
+	                    	title="<?= __('Thanks Mailchimp'); ?>" />
+	                </td>
+	                <td class="value">
+	                    <?php
+		                    if ($block->isDataAvailable()) {
+								$title = __("Yaay! Recovered by Mailchimp's campaign.");
+								$title .= '<br />';
+								$title .= __('Name');
+								$title .= ': ';
+								$title .= $block->getCampaignName();
+								$title .= '<br />';
+								$title .= __('Id');
+								$title .= ': ';
+								$title .= $block->getCampaignId();
+							} else {
+								$title = __('The campaign does not belong to the list configured for ');
+								$title .= $block->getStoreCodeFromOrder();
+								$title .= __(' view.');
+							}
+						?>
+                        <strong>
+                        	<?= $title; ?>
+                        </strong>
+	                </td>
+	            </tr>
+	        </table>
+	    </div>
+	</section>
+<?php //endif; ?>

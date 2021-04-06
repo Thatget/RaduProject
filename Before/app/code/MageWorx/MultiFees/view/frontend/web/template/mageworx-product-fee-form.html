@@ -1,0 +1,37 @@
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<!-- ko if: isDisplayed() -->
+<div id="mageworx-fee-container" data-bind="blockLoader: isLoading">
+
+    <!-- ko if: isDisplayTitle() -->
+    <div class="title" data-role="title" role="tab" aria-selected="false" aria-expanded="false" tabindex="0">
+        <strong role="heading"></span>
+            <span>Additional Fees</span>
+        </strong>
+    </div>
+    <!--/ko-->
+    <div>
+        <form class="form" data-bind="attr: {'data-hasrequired': $t('* Required Fields'), 'id':'mageworx-fee-form' + itemId}">
+            <fieldset class="fieldset">
+                <!-- ko foreach: getRegion('mageworx-fee-form-fields') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!--/ko-->
+            </fieldset>
+            <!--<button type="reset" data-bind="click: onSubmit" class="action">
+                <span data-bind="i18n: 'Reset'"></span>
+            </button>-->
+            <!-- ko ifnot: applyOnClick -->
+                <!-- ko if: feeCount -->
+                <button type="button" data-bind="click: onSubmit" class="action">
+                    <span data-bind="i18n: 'Apply Fee'"></span>
+                </button>
+                <!--/ko-->
+            <!--/ko-->
+        </form>
+    </div>
+</div>
+<!-- /ko -->

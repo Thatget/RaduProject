@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php
+/** @var $block \MageWorx\MultiFees\Block\Catalog\Product\Fee */
+?>
+<?php if ($block->isShowProductFee()): ?>
+    <div id="block-fee-summary" data-bind="scope:'mageworx-product-fee-form-container<?= $block->escapeHtml($block->getCurrentItemId())?>'" class="content"
+         data-role="content" aria-labelledby="block-fee-heading">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+            {
+                "#block-fee-summary": {
+                    "Magento_Ui/js/core/app": <?= $block->getJsLayout() ?>
+                }
+            }
+        </script>
+
+    </div>
+<?php endif; ?>

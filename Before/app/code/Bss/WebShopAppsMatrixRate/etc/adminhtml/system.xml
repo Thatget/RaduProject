@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="carriers">
+			<group id="matrixrate">
+				<field id="minimum_select" translate="label comment" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Minimum Total Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Set Yes/No to disable or enable minimum total cart for free shipping</comment>
+                </field>
+                <field id="minimum_input" translate="label comment" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimum Total Cart For Free Shipping</label>
+                    <comment>If leave blank, default value is 0</comment>
+                </field>
+			</group>
+		</section>
+	</system>
+</config>

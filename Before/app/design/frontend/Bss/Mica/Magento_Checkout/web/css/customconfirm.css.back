@@ -1,0 +1,49 @@
+@media only screen and (min-width: 1024px) {
+    .see-detail-modal div.modal-inner-wrap {
+        max-width: 540px;
+        margin-left: -270px !important;
+    }
+    .checkout-cart-index .see-detail-modal div.modal-inner-wrap {
+        max-width: 540px;
+        margin: 5rem auto !important;
+    }
+}
+.see-detail-modal div header.modal-header{
+    padding:10px;
+}
+.see-detail-modal div.modal-content{
+    padding-top:13px;
+}
+.see-detail-modal div header h1.modal-title{
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    border-bottom: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0;
+}
+.see-detail-modal .modal-inner-wrap {
+    background-color: orange;
+    background-image: linear-gradient(orange, orangered);
+}
+.see-detail-modal .modal-header button{
+    display: none;
+}
+.see-detail-modal .modal-title{
+    text-align: center;
+    color: white;
+}
+.see-detail-modal .modal-content ,.see-detail-modal .modal-footer{
+    margin:  0px 2px;
+    background-color: white;
+}
+.see-detail-modal div footer button.customconfirmyes ,.see-detail-modal div footer .customconfirmno{
+    color: white ;
+    background-color: orange !important ;
+    background-image: linear-gradient(orange, orangered) !important;
+    border:none !important;
+}
+.see-detail-modal div footer .customconfirmno{
+    float:right;
+}

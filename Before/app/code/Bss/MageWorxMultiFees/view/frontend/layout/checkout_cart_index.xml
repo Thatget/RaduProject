@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    	<referenceBlock name="checkout.cart.shipping">
+            <arguments>
+            	<argument name="jsLayout" xsi:type="array">
+            		<item name="components" xsi:type="array">
+            			<item name="block-summary" xsi:type="array">
+            				<item name="children" xsi:type="array">
+            					<item name="mageworx-shipping-fee-form-container" xsi:type="array">
+                                    <item name="component" xsi:type="string">MageWorx_MultiFees/js/view/shipping-fee</item>
+                                    <item name="sortOrder" xsi:type="string">20</item>
+                                    <item name="provider" xsi:type="string">checkoutProvider</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="template" xsi:type="string">MageWorx_MultiFees/checkout/shipping/shipping-fee</item>
+                                    </item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="mageworx-shipping-fee-form-fieldset" xsi:type="array">
+                                            <item name="component" xsi:type="string">uiComponent</item>
+                                            <item name="displayArea" xsi:type="string">mageworx-shipping-fee-form-fields</item>
+                                            <item name="children" xsi:type="array">
+                                                <!-- Wee add fields in LayoutProccessor class -->
+                                            </item>
+                                        </item>
+                                        <item name="errors" xsi:type="array">
+                                            <item name="sortOrder" xsi:type="string">0</item>
+                                            <item name="component" xsi:type="string">MageWorx_MultiFees/js/view/fee-messages</item>
+                                            <item name="displayArea" xsi:type="string">messages</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

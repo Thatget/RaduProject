@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="WebShopApps\MatrixRate\Model\Carrier\Matrixrate"
+        type="Bss\WebShopAppsMatrixRate\Model\Carrier\Matrixrate" />
+    <preference for="WebShopApps\MatrixRate\Model\ResourceModel\Carrier\Matrixrate"
+        type="Bss\WebShopAppsMatrixRate\Model\ResourceModel\Carrier\Matrixrate" />
+</config>

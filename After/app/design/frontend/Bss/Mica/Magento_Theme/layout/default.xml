@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceContainer name="header.panel.wrapper">
+            <block class="Magento\Cms\Block\Block" name="header_emergency_message_top" before="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">emergency_message_top</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer-contact" after="footer_links">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer-contact</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="promotion.banners" before="-">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">promotion-banners</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="top.links">
+            <block class="Magento\Framework\View\Element\Template" name="headerlinks" as="headerlinks" template="Magento_Theme::html/header/links.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="footer_links">
+            <block class="Magento\Cms\Block\Block" name="footer_links_block">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer-links-block</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="footer-container">
+            <container name="footer.bottom" as="footer.bottom" label="footer bottom" htmlTag="div" htmlClass="footer-bottom">
+                <container name="footer.bottom.content" as="footer.bottom.content" label="footer bottom content" htmlTag="div" htmlClass="footer-content">
+                    <block class="Magento\Cms\Block\Block" name="footer-payment">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">footer-payment</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </referenceContainer>
+        <move element="copyright" destination="footer.bottom.content" as="copyright" before="footer-payment"/>
+
+        <!-- <referenceBlock name="contact-us-link" remove="true"/> -->
+        <referenceBlock name="sales-guest-form-link" remove="true"/>
+        <referenceBlock name="search-term-popular-link" remove="true"/>
+        <referenceBlock name="privacy-policy-link" remove="true"/>
+        <referenceBlock name="catalog-search-advanced-link" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true"/>
+
+    </body>
+</page>

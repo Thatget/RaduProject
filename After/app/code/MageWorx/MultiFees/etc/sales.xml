@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Sales:etc/sales.xsd">
+    <section name="quote">
+        <group name="totals">
+            <item name="mageworx_fee" instance="MageWorx\MultiFees\Model\Total\Quote\Fee" sort_order="420"/>
+            <item name="mageworx_product_fee" instance="MageWorx\MultiFees\Model\Total\Quote\ProductFee" sort_order="421"/>
+            <item name="mageworx_fee_tax" instance="MageWorx\MultiFees\Model\Total\Quote\Fee\Tax" sort_order="620"/>
+            <item name="mageworx_product_fee_tax" instance="MageWorx\MultiFees\Model\Total\Quote\Fee\ProductFeeTax" sort_order="621"/>
+        </group>
+    </section>
+    <section name="order_invoice">
+        <group name="totals">
+            <item name="mageworx_fee" instance="MageWorx\MultiFees\Model\Total\Invoice\Fee" sort_order="340"/>
+            <item name="mageworx_product_fee" instance="MageWorx\MultiFees\Model\Total\Invoice\ProductFee" sort_order="341"/>
+        </group>
+    </section>
+    <section name="order_creditmemo">
+        <group name="totals">
+            <item name="mageworx_fee" instance="MageWorx\MultiFees\Model\Total\Creditmemo\Fee" sort_order="390"/>
+            <item name="mageworx_product_fee" instance="MageWorx\MultiFees\Model\Total\Creditmemo\ProductFee" sort_order="391"/>
+        </group>
+    </section>
+</config>

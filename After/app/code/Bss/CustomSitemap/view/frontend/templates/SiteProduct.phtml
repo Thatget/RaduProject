@@ -1,0 +1,20 @@
+
+<?php $url= $block->getBaseUrl(); ?>
+<div id="link-sitemap">
+	<a href="<?= $url.'catalog/seo_sitemap/page' ?>" title="Pages Sitemap"><?= __("Pages Sitemap") ?></a><br>
+	<a href="<?= $url.'catalog/seo_sitemap/category' ?>" title="Pages Sitemap"><?= __("Categories Sitemap") ?></a><br>
+</div>
+<div class="toolbar">
+	<?php echo $block->getPagerHtml(); ?>
+</div>
+<div id="mageplaza-seo-html-sitemap">
+    <?php echo $block->renderHtmlSitemapProduct(); ?>
+</div>
+<div id="link-sitemap">
+	<a href="<?= $url.'catalog/seo_sitemap/page' ?>" title="Pages Sitemap"><?= __("Pages Sitemap") ?></a><br>
+	<a href="<?= $url.'catalog/seo_sitemap/category' ?>" title="Pages Sitemap"><?= __("Categories Sitemap") ?></a><br>
+</div>
+<div class="toolbar">
+	<?php echo $block->getPagerHtml(); ?>
+</div>
+

@@ -1,0 +1,27 @@
+"My Cart", "Cart"
+"We found other products you might like!", "You may also be interested in the following product(s)"
+"Shop By", "Browse By", module, Magento_Catalog
+"Please enter your email address below to receive a password reset link.", "Please enter your email address below. You will receive a link to reset your password.", module, Magento_Customer
+"Reset My Password", "Submit", module, Magento_Customer
+"Go back", "Back to Login", module, Magento_Customer
+"Set a New Password", "Reset a Password", module, Magento_Customer
+"HTML Sitemap", "Categories", module, Mageplaza_Seo
+"Items %1 to %2 of %3 total", "%1-%2 of %3", module, Magento_Theme
+"DETAILS", "Specifications", module, Magento_Catalog
+"Add Invitee", "Add Recipient", module, Magento_SendFriend
+"Recently Viewed", "Recently Viewed Products"
+"Email", "Email Address", module, Magento_Customer
+"Forgot Your Password", "Forgot Your Password?", module, Magento_Customer
+"Clear Shopping Cart", "Empty Cart", module, Magento_Checkout
+"Enter discount code", "Discount Codes", module, Magento_Checkout
+"Apply Discount", "Apply"
+"Zip/Postal Code", "Zip",  module, Magento_Checkout
+"Order Total", "Grand Total", module, Magento_Checkout
+"Show all %1 results →", "All search results →"
+"Thank you for your purchase!", "Your order has been received.", module, Magento_Checkout
+"Your order number is: %1.", "Your order # is: %1.", module, Magento_Checkout
+"We'll email you an order confirmation with details and tracking info.", "You will receive an order confirmation email with details of your order and a link to track its progress.", module, Magento_Checkout
+"My Cart (0 item)", "My Cart"
+"My Wishlist (0 item)", "My Wishlist"
+"About Your Order", "About This Order:"
+"Cancel Coupon", "Cancel", module, Magento_Checkout

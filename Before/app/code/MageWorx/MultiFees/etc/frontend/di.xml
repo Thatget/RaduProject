@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="MageWorx\MultiFees\Block\Cart\Fee">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="cartFeeFormAttributes" xsi:type="object">MageWorx\MultiFees\Block\LayoutProcessor\CartLayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="MageWorx\MultiFees\Block\Catalog\Product\Fee">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="feeFormAttributes" xsi:type="object">MageWorx\MultiFees\Block\LayoutProcessor\ProductLayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Block\Onepage">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="cartFeeFormAttributes" xsi:type="object">MageWorx\MultiFees\Block\LayoutProcessor\CartLayoutProcessor</item>
+                <item name="paymentFeeFormAttributes" xsi:type="object">MageWorx\MultiFees\Block\LayoutProcessor\PaymentLayoutProcessor</item>
+                <item name="shippingFeeFormAttributes" xsi:type="object">MageWorx\MultiFees\Block\LayoutProcessor\ShippingLayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- PayPal Express Checkout blocks -->
+    <type name="MageWorx\MultiFees\Block\PayPal\Express\CartFees">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="cartFeeFormAttributes" xsi:type="object">MageWorx\MultiFees\Block\LayoutProcessor\CartLayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="MageWorx\MultiFees\Block\PayPal\Express\ShippingFees">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="shippingFeeFormAttributes" xsi:type="object">MageWorx\MultiFees\Block\LayoutProcessor\ShippingLayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="MageWorx\MultiFees\Block\PayPal\Express\PaymentFees">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="paymentFeeFormAttributes" xsi:type="object">MageWorx\MultiFees\Block\LayoutProcessor\PaymentLayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<css src="Magestorm_ReCaptcha::css/default.css"/>
+	</head>
+	<body>
+		<referenceContainer name="before.body.end">
+			<block class="Magestorm\ReCaptcha\Block\Explicit" ifconfig="magestorm_recaptcha/setting/is_active" name="init_recaptcha" template="Magestorm_ReCaptcha::js/init.phtml"/>
+		</referenceContainer>
+	</body>
+</page>

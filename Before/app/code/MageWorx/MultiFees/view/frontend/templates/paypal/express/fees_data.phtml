@@ -1,0 +1,10 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /**@var \MageWorx\MultiFees\Block\PayPal\Express\FeesData $block */ ?>
+<script>
+    window.mageworxFeeInfo = <?= \Zend_Json::encode($block->getFeeData()); ?>;
+</script>

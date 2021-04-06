@@ -1,0 +1,19 @@
+<div class="shipping-insurance-label">
+    <span data-bind="text: shippingInsurance()"></span>
+</div>
+
+<!-- ko if: hasProductFreeShipping() -->
+    <div class="free-shipping-product-label">
+        <strong><!-- ko i18n: 'The following items had free shipping only on this order'--><!-- /ko --></strong>
+    </div>
+    <div class="free-shipping-product-content">
+        <ul>
+            <!-- ko foreach: { data: getItems(), as: 'item' } -->
+            <!-- ko if: item.product.free_shipping_value != 'No Free Shipping' -->
+            <li><span data-bind="html: $parent.getFreeProduct(item)"></span></li>
+            <!-- /ko -->
+            <!-- /ko -->
+        </ul>
+    </div>
+<!-- /ko -->
+<div class="backordercomment-wrapper"> <div data-bind="html: backorderContent()"></div> </div>

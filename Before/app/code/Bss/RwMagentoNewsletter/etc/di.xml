@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Newsletter\Model\Subscriber">
+        <plugin name="bss_rwmagentonewsletter_model_subscriber" type="\Bss\RwMagentoNewsletter\Plugin\Subscriber" sortOrder="1" />
+    </type>
+    <type name="Magento\Newsletter\Controller\Subscriber\NewAction">
+        <plugin name="redirect_after_subscriber" type="Bss\RwMagentoNewsletter\Plugin\Subscriber\Redirect"/>
+    </type>
+</config>

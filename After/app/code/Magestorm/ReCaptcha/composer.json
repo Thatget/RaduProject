@@ -1,0 +1,47 @@
+{
+  "name": "magestorm/module-recaptcha",
+  "description": "Magento 2 - Add Google ReCaptcha to forms module",
+  "require": {
+    "php": "~7.0",
+    "magento/framework": "~100.0|~101.0",
+    "magestorm/module-base": "1.0.*"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Magestorm Team",
+      "homepage": "http://magestormweb.com/",
+      "role": "Developer"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packages.magento.com/"
+    },
+    {
+      "type": "vcs",
+      "url": "https://bitbucket.org/magestorm/module-recaptcha"
+    }
+  ],
+  "keywords": [
+    "magento 2",
+    "recaptcha",
+    "recaptcha google",
+    "recaptcha google extension",
+    "recaptcha google extension magento 2",
+    "magento 2 extension"
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "files": [ "registration.php" ],
+    "psr-4": {
+      "Magestorm\\ReCaptcha\\": ""
+    }
+  }
+}

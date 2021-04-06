@@ -1,0 +1,105 @@
+<?php 
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var Magento\Customer\Block\Account\AuthorizationLink $block */
+$wishListHelper = $this->helper('\Magento\Wishlist\Helper\Data');
+$wishListItems = $wishListHelper->getItemCount();
+?>
+<div class="main-account-wrapper">
+	<?php if ($block->isLoggedIn()): ?>
+		<span data-action="account-links" class="toogle-account icon-avatar logged"><span class="label"><?php echo __('Account') ?></span></span>
+	<?php else: ?>
+		<span data-action="account-links" class="toogle-account icon-avatar not-logged"><span class="label"><?php echo __('Account') ?></span></span>
+	<?php endif; ?>
+	<div class="account-links" style="display: none;">
+		<ul class="links">
+			<?php if (!$block->isLoggedIn()): ?>
+				<li class="link login-link">
+					<a href="<?= $block->getHref() ?>" title="<?= __("Login") ?>">
+						<?= __("Login"); ?>
+					</a>
+				</li>
+				<li class="link my-cart-link">
+					<!-- updateMyCartItems -->
+					<a href="<?= $block->getBaseUrl() ?>checkout/cart/" title="<?= __("My Cart") ?>">
+						<?php 
+							echo __("My Cart (0 item)");
+						?>
+					</a>
+				</li>
+				<li class="link my-checkout-link">
+					<a href="<?= $block->getBaseUrl() ?>checkout/" title="<?= __("Checkout") ?>">
+						<?= __("Checkout"); ?>
+					</a>
+				</li>
+				<li class="link register-link">
+					<a href="<?= $block->getBaseUrl() ?>customer/account/create/" title="<?= __("Register") ?>">
+						<?= __("Register"); ?>
+					</a>
+				</li>
+			<?php else: ?>
+				<li class="link my-account-link">
+					<a href="<?= $block->getBaseUrl() ?>customer/account/" title="<?= __("My Account") ?>">
+						<?= __("My account"); ?>
+					</a>
+				</li>
+				<li class="link my-wishlist-link" data-bind="scope: 'wishlist'">
+				    <a href="<?= $block->getBaseUrl() ?>wishlist/" title="<?= __("My Wishlist") ?>">
+				    	
+				        <!-- ko if: wishlist().counter -->
+				        <?= __("My Wishlist %1", '(<span data-bind="text: wishlist().counter" class="counter qty"></span>)') ?>
+				        <!-- /ko -->
+				        <!-- ko ifnot: wishlist().counter -->
+					    <?= __("My Wishlist") ?>
+						<!-- /ko -->
+				    </a>
+				</li>
+				<li class="link my-cart-link">
+					<!-- updateMyCartItems -->
+					<a href="<?= $block->getBaseUrl() ?>checkout/cart/" title="<?= __("My Cart") ?>">
+						<?php 
+							echo __("My Cart (0 item)");
+						?>
+						<span></span>
+					</a>
+				</li>
+				<li class="link checkout-link">
+					<a href="<?= $block->getBaseUrl() ?>checkout/" title="<?= __("Checkout") ?>">
+						<?= __("Checkout"); ?>
+					</a>
+				</li>
+				<li class="link logout">
+					<a href="<?= $block->getHref() ?>" title="<?= __("Log out") ?>">
+						<?= __("Log out"); ?>
+					</a>
+				</li>
+			<?php endif; ?>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript">
+	require(['jquery'], function($){ 
+	  	$(".toogle-account").click(function(){
+	  		$(".account-links").toggle();
+	  	})
+ 	});
+</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "wishlist": {
+                        "component": "Magento_Wishlist/js/view/wishlist"
+                    }
+                }
+            }
+        }
+    }
+
+</script>

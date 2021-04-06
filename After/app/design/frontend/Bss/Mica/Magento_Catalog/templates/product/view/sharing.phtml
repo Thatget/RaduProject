@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+	$catalogHelper = $this->helper('Bss\CatalogHelper\Helper\Category');
+	$_helper = $this->helper('Magento\Catalog\Helper\Output');
+
+	$_product = $block->getProduct();
+	$hasCustomOption = $_product->getTypeInstance()->hasOptions($_product);
+	$_productName = $_product->getName();
+	$_productUrl = urlencode(trim($_product->getProductUrl()));
+	$imageHelper = $this->helper('Magento\Catalog\Helper\Image');
+	$_productImageUrl = $imageHelper->init($_product, 'product_base_image')->setImageFile($_product->getFile())->getUrl();
+	$_productShortDescription = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description')
+?>
+
+<div class="sharing-links">
+	
+	<?php if ($block->canEmailToFriend()): ?>
+		<div class="share email-share-button">
+			<a
+		    href="<?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Product')->getEmailToFriendUrl($_product) ?>"
+		    class="action mailto friend">
+		    	<span><?= /* @escapeNotVerified */ __('Email') ?></span>
+			</a>
+		</div>
+	    
+	<?php endif; ?>
+
+	<div class="share fb-share-button" data-href="<?php echo $_productUrl ?>" data-layout="button_count" data-size="large">
+		<a 
+		target="_blank"
+		title="Share on Facebook"
+		class="fb-xfbml-parse-ignore"
+		href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $_productUrl ?>">
+			<i class="fa fa-facebook-official"></i>
+		</a>
+	</div>
+	<div class="share tw-share-button">
+		<a 
+		target="_blank"
+		href="<?php echo 'http://twitter.com/home?status=' . $_productName . '+' . $_productUrl; ?>"
+		title="Share on Twitter"
+		class="link-twitter">
+			<i class="fa fa-twitter"></i>
+		</a>
+	</div>
+
+</div>
+<?php if($hasCustomOption): ?>
+<script type="text/x-magento-init">
+    {
+	    "*": {
+	        "Magento_Catalog/js/product/view/sharing": {
+	            "data": {}
+	        }
+	    }
+	}
+
+</script>
+<?php endif; ?>

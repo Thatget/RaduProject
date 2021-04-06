@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="order.create.shipping.method.form">
+		    <action method="setTemplate">
+		        <argument name="template" xsi:type="string">Bss_MageWorxMultiFees::order/create/shipping/method/form.phtml</argument>
+		    </action>
+		    <block class="MageWorx\MultiFees\Block\Adminhtml\Order\Create\Form\Fee" template="Bss_MageWorxMultiFees::order/create/form/fees.phtml" name="form_fees_shipping_method"/>
+		</referenceBlock>
+		<referenceBlock name="form_fees" remove="true" />
+    </body>
+</page>

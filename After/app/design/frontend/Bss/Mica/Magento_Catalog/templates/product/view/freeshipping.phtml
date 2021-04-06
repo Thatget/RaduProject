@@ -1,0 +1,7 @@
+
+<?php $_product = $block->getProduct(); ?>
+<?php if($_product->getAttributeText('free_shipping') && $_product->getAttributeText('free_shipping') != 'No Free Shipping'): ?>
+    <div class="free-shipping">
+        <?php echo $_product->getAttributeText('free_shipping'); ?>
+    </div>
+<?php endif; ?>

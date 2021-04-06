@@ -1,0 +1,52 @@
+<?php
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_product = $block->getProduct();
+?>
+<div class="" style="width: 100%; order: 2">
+    <?php
+    $attribute0 = $_product->getResource()->getAttribute('a01_specialorder_admin');
+    $attribute1 = $_product->getResource()->getAttribute('a01_backorder_admin');
+    $attribute2 = $_product->getResource()->getAttribute('a02_backorder_admin');
+    $attribute3 = $_product->getResource()->getAttribute('a03_backorder_admin');
+    $attribute4 = $_product->getResource()->getAttribute('a04_backorder_admin');
+    $attribute5 = $_product->getResource()->getAttribute('a05_backorder_admin');
+    $attribute6 = $_product->getResource()->getAttribute('pickup_only');
+    ?>
+    <?php if(($attribute6) &&  $attribute6->getFrontend()->getValue($_product) != 'No Pickup'): ?>
+        <div>
+            <?php echo $attribute6->getFrontend()->getValue($_product); ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if(($attribute0) &&  $attribute0->getFrontend()->getValue($_product) != 'No'): ?>
+        <div>
+            <?php echo $attribute0->getFrontend()->getValue($_product); ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if(($attribute1) &&  $attribute1->getFrontend()->getValue($_product) != 'No'): ?>
+        <div>
+            <?php echo $attribute1->getFrontend()->getValue($_product); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(($attribute2) &&  $attribute2->getFrontend()->getValue($_product) != 'No'): ?>
+        <div>
+            <?php echo $attribute2->getFrontend()->getValue($_product); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(($attribute3) &&  $attribute3->getFrontend()->getValue($_product) != 'No'): ?>
+        <div>
+            <?php echo $attribute3->getFrontend()->getValue($_product); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(($attribute4) &&  $attribute4->getFrontend()->getValue($_product) != 'No'): ?>
+        <div>
+            <?php echo $attribute4->getFrontend()->getValue($_product); ?>
+        </div>
+    <?php endif; ?>
+    <?php if(($attribute5) &&  $attribute5->getFrontend()->getValue($_product) != 'No'): ?>
+        <div>
+            <?php echo $attribute5->getFrontend()->getValue($_product); ?>
+        </div>
+    <?php endif; ?>
+</div>

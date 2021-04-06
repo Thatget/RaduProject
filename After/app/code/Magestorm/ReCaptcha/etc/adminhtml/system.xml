@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="magestorm" translate="label" sortOrder="150">
+			<label>Magestorm</label>
+		</tab>
+		<section id="magestorm_recaptcha" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Google reCAPTCHA</label>
+			<tab>magestorm</tab>
+			<resource>Magestorm_ReCaptcha::config_recaptcha</resource>
+			<group id="hint" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+				<frontend_model>Magestorm\Base\Block\Adminhtml\System\Config\Fieldset\Hint</frontend_model>
+			</group>
+			<group id="setting" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General</label>
+				<field id="is_active" type="select" translate="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Enable CAPTCHA on Store</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="captcha_type" type="select" translate="label" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Captcha Type</label>
+					<source_model>Magestorm\ReCaptcha\Model\System\Source\CaptchaType</source_model>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+				</field>
+				<field id="site_key" type="text" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Site Key</label>
+					<depends>
+						<field id="is_active">1</field>
+						<field id="captcha_type">default</field>
+					</depends>
+					<frontend_class>required-entry</frontend_class>
+					<comment><![CDATA[You can get site key <a href="https://www.google.com/recaptcha/admin" target="_blank">here</a>]]></comment>
+				</field>
+				<field id="secret_key" type="text" translate="label" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Secret Key</label>
+					<frontend_class>required-entry</frontend_class>
+					<depends>
+						<field id="is_active">1</field>
+						<field id="captcha_type">default</field>
+					</depends>
+					<comment><![CDATA[You can get secret key <a href="https://www.google.com/recaptcha/admin" target="_blank">here</a>]]></comment>
+				</field>
+				<field id="invisible_site_key" type="text" translate="label" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Site Key</label>
+					<depends>
+						<field id="is_active">1</field>
+						<field id="captcha_type">invisible</field>
+					</depends>
+					<frontend_class>required-entry</frontend_class>
+					<comment><![CDATA[You can get site key <a href="https://www.google.com/recaptcha/admin" target="_blank">here</a>]]></comment>
+				</field>
+				<field id="invisible_secret_key" type="text" translate="label" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Secret Key</label>
+					<frontend_class>required-entry</frontend_class>
+					<depends>
+						<field id="is_active">1</field>
+						<field id="captcha_type">invisible</field>
+					</depends>
+					<comment><![CDATA[You can get secret key <a href="https://www.google.com/recaptcha/admin" target="_blank">here</a>]]></comment>
+				</field>
+				<field id="forms" type="multiselect" translate="label" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Forms</label>
+					<source_model>Magestorm\ReCaptcha\Model\System\Source\Forms</source_model>
+					<depends>
+						<field id="is_active">1</field>
+					</depends>
+				</field>
+				<field id="custom_forms" translate="label comment tooltip" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+					<label>Custom Forms</label>
+					<frontend_model>Magestorm\ReCaptcha\Block\System\Config\Form\Field\CustomForms</frontend_model>
+					<backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+					<comment>
+						<![CDATA[<style>
+							.accordion .config .label {width: 5%;}
+							.accordion .config .value {width: 85%;}
+						</style>]]>
+					</comment>
+					<depends>
+                        <field id="is_active">1</field>
+                    </depends>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

@@ -1,0 +1,20 @@
+<?php
+/**
+ * Created by: Magestorm Team
+ * @var $block \Magestorm\ReCaptcha\Block\Explicit
+ */
+?>
+<?php if ($block->getFormsApplied()) : ?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "magestorm/reCaptchaValidate": {
+                "site_key": "<?php echo $block->getSiteKey() ?>",
+				"secret_key": "<?php echo $block->getSecretKey() ?>",
+				"type": "<?php echo $block->getCaptchaType() ?>",
+				"data": <?php echo $block->getCaptchaSelectorsJson() ?>
+            }
+        }
+    }
+</script>
+<?php endif; ?>

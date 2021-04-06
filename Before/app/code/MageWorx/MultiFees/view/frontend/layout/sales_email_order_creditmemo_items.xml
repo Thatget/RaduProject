@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MageWorx_MultiFees::css/style.css"/>
+    </head>
+    <body>
+        <referenceBlock name="additional.product.info">
+            <block class="MageWorx\MultiFees\Block\Order\ProductFeeInfo" as="mageworx_info" name="sales.order.mageworx.product.info"/>
+        </referenceBlock>
+    </body>
+</page>

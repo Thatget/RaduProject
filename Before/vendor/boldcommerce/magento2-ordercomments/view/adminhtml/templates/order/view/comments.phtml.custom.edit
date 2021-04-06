@@ -1,0 +1,20 @@
+<?php if($comment = $block->getOrderComment()):?>
+    <!--<section class="admin__page-section">
+        <div class="admin__page-section-title">
+            <span class="title"><?php /* @escapeNotVerified */ //echo __('Order Comment') ?></span>
+        </div> -->
+        <div class="admin__page-section-content" id="new_comment">
+            <?php echo nl2br($block->escapeHtml($comment));?>
+        </div>
+    <!-- </section> -->
+	 <script>
+require([
+    'jquery',
+    'accordion'  // the alias for "mage/accordion"
+], function ($) {
+    $(function () { // to ensure that code evaluates on page load
+        $('#new_comment').appendTo($('.note-list'));
+    });
+});
+</script>
+<?php endif; ?>

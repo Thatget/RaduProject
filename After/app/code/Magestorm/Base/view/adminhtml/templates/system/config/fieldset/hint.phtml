@@ -1,0 +1,28 @@
+<?php
+/**
+ * Magestorm_Buynow
+ *
+ * @category    Magestorm
+ * @package     Magestorm_Buynow
+ * @author      Magestorm Team <magestormteam@gmail.com>
+ * @copyright   Magestorm (http://magestormweb.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+$moduleName = $this->getModuleMSTName();
+?>
+<div style="background:#EAF0EE;border:1px solid #CCCCCC;margin-bottom:10px;padding:11px 0 0 10px;">
+    <h4>
+        <p>
+            <a target="_blank" href="http://magestormweb.com">
+                <img width="224px" style="padding-left: 15px;" height="60px" src="http://magestormweb.com/pub/static/frontend/Magestorm/mstweb/en_US/images/logo.svg"/>
+            </a>
+        </p>
+        <?php if ($moduleName): ?>
+            <?php $name = str_replace('Magestorm_', '', $moduleName) ?>
+            <div style="padding-left: 15px;">
+                <p> <strong style="color:#EA7601;"><?php echo $name ?> v<?php echo $this->getModuleVersion($moduleName) ?><?php echo __(' by') ?></strong> <a target="_blank" href="http://magestormweb.com"><strong>Mage Storm</strong></a></p>
+                <p><?php echo __('You can find more extensions in our ') ?><a href="http://magestormweb.com/extensions.html" target="_blank"><?php echo __('Store') ?></a></p>
+            </div>
+        <?php endif; ?>
+    </h4>
+</div>

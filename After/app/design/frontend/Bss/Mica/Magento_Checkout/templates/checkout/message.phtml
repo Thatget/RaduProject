@@ -1,0 +1,7 @@
+<?php
+$summaryBlockDetail = $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('shipping_message_cart')->toHtml()
+?>
+<script type="text/javascript">
+    window.summaryBlockDetail = `<?php echo ($summaryBlockDetail)?>`;
+    console.log(window);
+</script>

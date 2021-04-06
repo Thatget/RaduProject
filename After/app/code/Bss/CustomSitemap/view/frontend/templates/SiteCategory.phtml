@@ -1,0 +1,24 @@
+<?php $helper = $this->helper("Bss\CustomSitemap\Helper\Data"); ?>
+<?php if ($block->checkEnableCategorySitemap()): ?>
+	<?php $url= $block->getBaseUrl(); ?>
+	<div id="link-sitemap">
+		<a href="<?= $url.'catalog/seo_sitemap/page' ?>" title="Pages Sitemap"><?= __("Pages Sitemap") ?></a><br>
+		<a href="<?= $url.'catalog/seo_sitemap/product/' ?>" title="Products Sitemap"><?= __("Products Sitemap") ?></a>
+	</div>
+	<div class="count-container">
+		<span class="amount"><?= count($helper->getCategoryCollection(2)).__(" Item(s)"); ?></span>
+	</div>
+	<div id="mageplaza-seo-html-sitemap">
+		<?php echo $block->showCategory(); ?>
+	</div>
+	<div id="link-sitemap">
+		<a href="<?= $url.'catalog/seo_sitemap/page' ?>" title="Pages Sitemap"><?= __("Pages Sitemap") ?></a><br>
+		<a href="<?= $url.'catalog/seo_sitemap/product/' ?>" title="Products Sitemap"><?= __("Products Sitemap") ?></a>
+	</div>
+	<div class="count-container">
+		<span class="amount"><?= count($helper->getCategoryCollection(2)).__(" Item(s)"); ?></span>
+	</div>
+<?php endif ?>
+
+
+

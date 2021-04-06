@@ -1,0 +1,39 @@
+
+.lib-css-position-center-x(@left: 50%) {
+	position: absolute;
+	left: @left;
+	.lib-css(transform, translateX(-50%));
+}
+.lib-css-position-center-y(@top: 50%) {
+	position: absolute;
+	top: @top;
+	.lib-css(transform, translateY(-50%));
+}
+.lib-css-position-center-xy(@top: 50%, @left: 50%) {
+	position: absolute;
+	top: @top;
+	left: 50%;
+	.lib-css(transform, translate(-50%, -50%));
+}
+.lib-css-flex-center-x() {
+	.lib-vendor-prefix-display(flex);
+	.lib-vendor-prefix-flex-direction(row);
+	.lib-vendor-prefix-flex-wrap(nowrap);
+    justify-content: center;
+}
+.lib-css-flex-center-y() {
+	.lib-vendor-prefix-display(flex);
+	.lib-vendor-prefix-flex-direction(column);
+	.lib-vendor-prefix-flex-wrap(nowrap);
+    justify-content: center;
+}
+
+.lib-css-flex(@display: flex, @flex-direction: column, @flex-wrap: unset) {
+	.lib-vendor-prefix-display(@display);
+	.lib-vendor-prefix-flex-direction(@flex-direction);
+	.lib-vendor-prefix-flex-wrap(@flex-wrap);
+}
+.lib-vendor-prefix-justify-content(@value: unset) {
+	.lib-css(justify-content, @value, 1);
+}
+

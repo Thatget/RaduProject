@@ -1,0 +1,7 @@
+1,app/etc/env.php
+	'x-frame-options' => 'CROSS-ORIGIN',
+2,3,Micalighting:(https://magento.stackexchange.com/questions/286634/magento-2-3-xx-unable-to-serialize-value-error-malformed-utf-8-characters-pos)
+	Magento\Framework\Serialize\Serializer\JsonHexTag.php
+	vendor/magento/framework/Serialize/Serializer/Json.php
+	https://magento.stackexchange.com/questions/202448/magento-2-2-1-unable-to-serialize-value
+3,/home/m24micalight/public_html/vendor/boldcommerce/magento2-ordercomments/view/frontend/layout/checkout_index_index.xml

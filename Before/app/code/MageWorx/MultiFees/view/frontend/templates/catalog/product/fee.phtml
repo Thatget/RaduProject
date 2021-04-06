@@ -1,0 +1,40 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php
+/** @var $block \MageWorx\MultiFees\Block\Catalog\Product\Fee */
+?>
+
+<?php if ($block->isShowProductFee()): ?>
+    <div id="block-fee-wrapper">
+        <div id="block-fee" class="block"
+             data-mage-init='{"collapsible":{"openedState": "active", "saveState": true}}'>
+            <div class="title" data-role="title">
+                <strong id="block-fee-heading" role="heading" aria-level="2">
+                    <?= $block->escapeHtml(__('Estimate Fees')) ?>
+                </strong>
+            </div>
+        </div>
+    </div>
+    <div id="block-fee-summary" data-bind="scope:'mageworx-product-fee-form-container'" class="content"
+         data-role="content" aria-labelledby="block-fee-heading">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+            {
+                "#block-fee-summary": {
+                    "Magento_Ui/js/core/app": <?= /* @escapeNotVerified */ $block->getJsLayout() ?>
+                }
+            }
+        </script>
+    </div>
+    <?php if ($block->isShowAboveButton()): ?>
+        <script type="text/javascript">
+            window.onload = function () {
+                jQuery('#block-fee-summary').insertBefore('#product-addtocart-button');
+            }
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

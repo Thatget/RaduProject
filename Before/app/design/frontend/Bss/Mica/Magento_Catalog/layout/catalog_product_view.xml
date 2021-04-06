@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="free.shipping.text" template="Magento_Catalog::product/view/freeshipping.phtml" before="product.info.price"/>
+            <block class="Magento\Catalog\Block\Product\View" name="product.name" template="Magento_Catalog::product/name.phtml" before="-"/>
+            <block class="Magento\Catalog\Block\Product\View\Attributes" name="product.backorder.attribute" as="model_number" template="Magento_Catalog::product/view/backorder_attrib.phtml"  after="-" />
+
+        </referenceContainer>
+        <referenceContainer name="product.info.social">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.sharing" after="product.info.mailto" template="Magento_Catalog::product/view/sharing.phtml" before="pdf_link"/>
+        </referenceContainer>
+        <!-- <referenceBlock name="product.info.details">
+            <block class="Magento\Catalog\Block\Product\View" name="enquiry.tab" template="Magento_Catalog::product/view/product_enquiry.phtml" group="detailed_info" >
+                <arguments>
+                    <argument translate="true" name="title" xsi:type="string">Enquiry</argument>
+                </arguments>
+            </block>
+        </referenceBlock> -->
+        <referenceContainer name="product.info.mailto" remove="true"/>
+        <move element="product.info.stock.sku" destination="product.info.main" after="product.info.social"/>
+        <move element="product.info.media" destination="content" before="-"/>
+        <referenceBlock name="reviews.tab" remove="true" />
+        <referenceBlock name="product.attributes" remove="true" />
+        
+        <!-- <move element="page.main.title" destination="content" before="product.info.main" /> -->
+    </body>
+</page>
+

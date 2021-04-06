@@ -1,0 +1,3 @@
+#block-fee-summary .field, #block-shipping-fee-summary .field {
+    display: block;
+}

@@ -1,0 +1,46 @@
+<div class="shipping-insurance-label">
+    <span data-bind="text: shippingInsurance()"></span>
+</div>
+
+<!-- ko if: hasProductFreeShipping() -->
+    <br/>
+    <br/>
+    <div class="free-shipping-product-label">
+        <strong><!-- ko i18n: 'The following items had free shipping only on this order'--><!-- /ko --></strong>
+    </div>
+    <div class="free-shipping-product-content">
+        <ul>
+            <!-- ko foreach: { data: getItems(), as: 'item' } -->
+                <!-- ko if: item.product.free_shipping_value != 'No Free Shipping' -->
+                    <li><span data-bind="html: $parent.getFreeProduct(item)"></span></li>
+                <!-- /ko -->
+            <!-- /ko -->
+        </ul>
+    </div>
+<!-- /ko -->
+
+<!-- ko if: getInitialCollapseState() == 2 -->
+<div class="payment-option opc-payment-additional comment last">
+    <div class="payment-option-title field choice">
+        <span data-bind="i18n: 'Do you have any comments regarding the order?'"></span>
+    </div>
+    <div class="payment-option-content">
+        <!-- ko template: 'Bold_OrderComment/checkout/form-content' --><!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->
+
+<!-- ko if: getInitialCollapseState() != 2 -->
+<div class="payment-option _collapsible opc-payment-additional comment last"
+     data-bind="mageInit: {'collapsible':{'openedState': '_active', 'active': isInitialStateOpened()}}">
+
+    <div class="payment-option-title field choice" data-role="title">
+        <span class="action action-toggle" role="heading" aria-level="2">
+            <!-- ko i18n: 'Do you have any comments regarding the order?'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content">
+        <!-- ko template: 'Bold_OrderComment/checkout/form-content' --><!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->

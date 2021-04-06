@@ -1,0 +1,153 @@
+<?php
+$catalogHelper = $this->helper("Bss\CatalogHelper\Helper\Category");
+$_product = $catalogHelper->getCurentProduct();
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Catalog\Block\Product\View\Details $block */
+?>
+<?php if ($detailedInfoGroup = $block->getGroupSortedChildNames('detailed_info', 'getChildHtml')):?>
+    <div class="product info detailed">
+        <?php $layout = $block->getLayout(); ?>
+        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                ?>
+                <div class="data item title"
+                     aria-labelledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                     data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?= /* @escapeNotVerified */ $alias ?>"
+                       id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                        <?= /* @escapeNotVerified */ __(strtoupper($label)) ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                    <h2><?= $label ?></h2>
+                    <?= /* @escapeNotVerified */ $html ?>
+                </div>
+            <?php endforeach;?>
+
+            
+            <!-- Additional Information -->
+            <?php
+                $alias = __("Additional Information");
+                $label = $alias;
+                $html = $catalogHelper->renderElement($_product->getData('a01_useful_information'));
+                if($html):
+            ?>
+                <div class="data item title"
+                    aria-labelledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                    data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?= /* @escapeNotVerified */ $alias ?>"
+                       id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                        <?= /* @escapeNotVerified */ $label ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                    <?= /* @escapeNotVerified */ $html ?>
+                </div>
+            <?php endif; ?>
+            
+            <!-- Delivery -->
+            <?php
+                $alias = __("Delivery");
+                $label = $alias;
+                $html = $catalogHelper->renderElement($_product->getData('a01_delivery_information'));
+                if($html):
+            ?>
+                <div class="data item title"
+                    aria-labelledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                    data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?= /* @escapeNotVerified */ $alias ?>"
+                       id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                        <?= /* @escapeNotVerified */ $label ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                    <?= /* @escapeNotVerified */ $html ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- Warranty -->
+            <?php 
+                $alias = __("Warranty");
+                $label = $alias;
+                $html = $catalogHelper->renderElement($_product->getData('a01_warranty_and_returns'));
+                if($html):
+            ?>
+                <div class="data item title"
+                    aria-labelledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                    data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?= /* @escapeNotVerified */ $alias ?>"
+                       id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                        <?= /* @escapeNotVerified */ $label ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                    <?= /* @escapeNotVerified */ $html ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- Product Enquiry -->
+            <?php
+                $alias = __("Enquiry");
+                $label = $alias;
+                $html = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('product-enquiry')->toHtml();
+                if($html):
+            ?>
+                <div class="data item title"
+                    aria-labelledby="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title"
+                    data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */ $alias ?>">
+                    <a class="data switch"
+                       tabindex="-1"
+                       data-toggle="switch"
+                       href="#<?= /* @escapeNotVerified */ $alias ?>"
+                       id="tab-label-<?= /* @escapeNotVerified */ $alias ?>-title">
+                        <?= /* @escapeNotVerified */ $label ?>
+                    </a>
+                </div>
+                <div class="data item content" id="<?= /* @escapeNotVerified */ $alias ?>" data-role="content">
+                    <?= /* @escapeNotVerified */ $html ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- find us -->
+            <div class="data item title"
+                aria-labelledby="tab-label-find-us-title"
+                data-role="collapsible" id="tab-label-find-us">
+                <a class="data switch"
+                   tabindex="-1"
+                   data-toggle="switch"
+                   href="#"
+                   id="tab-label-find-us-title">
+                    <?= /* @escapeNotVerified */ __("Find Us") ?>
+                </a>
+            </div>
+            <div class="data item content" id="fin-us" data-role="content">
+                <?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('find_us')->toHtml(); ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

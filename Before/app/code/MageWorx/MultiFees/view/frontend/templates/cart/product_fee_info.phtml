@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /** @var $block \MageWorx\MultiFees\Block\Order\Info|\MageWorx\MultiFees\Block\Cart\ProductFeeInfo */ ?>
+<?php if (count($block->getFeeDetails())) {?>
+    <?php foreach ($block->getFeeDetails() as $fees) { ?>
+        <?php foreach ($fees as $fee) { ?>
+            <dl class="item-options"
+                <dt>
+                    <strong class="product-fee-info-title"><?= $block->escapeHtml($fee['title']); ?></strong>
+                </dt>
+                <dd class="box-content">
+                    <?php foreach ($fee['options'] as $optionId => $option) { ?>
+                        <table>
+                            <tr>
+                                <td class="product-fee-info-options">
+                                    <?= $block->escapeHtml($option['title']); ?>
+                                    <?= $block->getOptionPriceHtml($option) ?>
+                                </td>
+                            </tr>
+                        </table>
+                    <?php } ?>
+                </dd>
+                <?= $block->getFeeDateHtml($fee); ?>
+                <?= $block->getFeeMessageHtml($fee); ?>
+            </dl>
+        <?php } ?>
+    <?php } ?>
+<?php } ?>

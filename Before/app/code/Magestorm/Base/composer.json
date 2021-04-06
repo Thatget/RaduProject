@@ -1,0 +1,38 @@
+{
+  "name": "magestorm/module-base",
+  "description": "Magestorm Base module",
+  "require": {
+    "php": "~7.0",
+    "magento/framework": "100.0.*|100.1.*|101.0.*"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Magestorm Team",
+      "homepage": "http://magestormweb.com/",
+      "role": "Developer"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packages.magento.com/"
+    },
+    {
+      "type": "vcs",
+      "url": "https://bitbucket.org/magestorm/module-base"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "files": [ "registration.php" ],
+    "psr-4": {
+      "Magestorm\\Base\\": ""
+    }
+  }
+}

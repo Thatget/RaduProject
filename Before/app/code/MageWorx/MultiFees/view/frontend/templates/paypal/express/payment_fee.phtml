@@ -1,0 +1,47 @@
+<?php
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /**@var \MageWorx\MultiFees\Block\PayPal\Express\PaymentFees $block */ ?>
+<?php if ($block->getIsEnabled()): ?>
+    <div id="block-payment-fee" class="block fee-container"
+         data-mage-init='{"collapsible":{"openedState": "active", "saveState": true}}'>
+        <div class="title" data-role="title">
+            <strong id="block-payment-fee-heading" role="heading" aria-level="2">
+                <?= $block->escapeHtml(__('Estimate Payment Fees')); ?>
+            </strong>
+        </div>
+        <div id="block-payment-fee-summary" data-bind="scope:'mageworx-payment-fee-form-container'" class="content"
+             data-role="content" aria-labelledby="block-payment-fee-heading">
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <script type="text/x-magento-init">
+                    {
+                        "#block-payment-fee": {
+                            "Magento_Ui/js/core/app": <?= $block->getJsLayout(); ?>
+                        }
+                    }
+            </script>
+        </div>
+    </div>
+    <script>
+        require(['jquery', 'jquery/ui'], function ($) {
+            if (!$('#mageworx-payment-fee-container').length) {
+                var i = 0;
+                var target = document.querySelector('#block-payment-fee-summary');
+                var observer = new MutationObserver(function (mutations) {
+                    mutations.forEach(function (mutation) {
+                        if ($('#mageworx-payment-fee-container').length && i === 0) {
+                            i++;
+                            $('#block-payment-fee-wrapper').show();
+                            observer.disconnect();
+                        }
+                    });
+                });
+                var config = {childList: true, subtree: true};
+                observer.observe(target, config);
+            }
+        });
+    </script>
+<?php endif; ?>

@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+    <!-- Available Fees -->
+
+    <!--Get All Available Cart Fees -->
+    <route url="/V1/multifees/cartFees/:cartId" method="GET">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="getAvailableCartFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Get All Available Shipping Fees -->
+    <route url="/V1/multifees/shippingFees/:cartId" method="GET">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="getAvailableShippingFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Get All Available Payment Fees -->
+    <route url="/V1/multifees/paymentFees/:cartId" method="GET">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="getAvailablePaymentFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Get All Available Product Fees By Quote Items-->
+    <route url="/V1/multifees/productFees/:cartId" method="GET">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="getAvailableProductFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!-- Required Fees -->
+
+    <!--Get All Required Cart Fees -->
+    <route url="/V1/multifees/cartFees/required/:cartId" method="GET">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="getRequiredCartFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Get All Required Shipping Fees -->
+    <route url="/V1/multifees/shippingFees/required/:cartId" method="GET">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="getRequiredShippingFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Get All Required Payment Fees -->
+    <route url="/V1/multifees/paymentFees/required/:cartId" method="GET">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="getRequiredPaymentFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Get All Required Product Fees  By Quote Items-->
+    <route url="/V1/multifees/productFees/required/:cartId" method="GET">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="getRequiredProductFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Add Fee To Cart-->
+    <!--Expected param: 'feeData' (array) - array of fees
+        "id": fee id,
+        "options": option id
+    -->
+    <route url="/V1/multifees/setCartFees/:cartId" method="POST">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="setCartFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Add Fee To Cart-->
+    <!--Expected param: 'feeData' (array) - array of fees
+        "id": fee id,
+        "options": option id
+    -->
+    <route url="/V1/multifees/setPaymentFees/:cartId" method="POST">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="setPaymentFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Add Fee To Cart-->
+    <!--Expected param: 'feeData' (array) - array of fees
+        "id": fee id,
+        "options": option id
+    -->
+    <route url="/V1/multifees/setShippingFees/:cartId" method="POST">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="setShippingFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+
+    <!--Add Product Fee To Cart-->
+    <!--Expected param: 'feeData' (array) - array of fees
+        "id": fee id,
+        "options": option id,
+        "itemId": quote item id
+    -->
+    <route url="/V1/multifees/setProductFees/:cartId" method="POST">
+        <service class="MageWorx\MultiFees\Api\QuoteFeeManagerInterface" method="setProductFees"/>
+        <resources>
+            <resource ref="MageWorx_MultiFees::multifees" />
+        </resources>
+    </route>
+</routes>
