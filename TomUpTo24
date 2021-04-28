@@ -1,0 +1,51 @@
+
+Trước khi chạy composer update giữ nguyên php73
+
+
+
+install composer in root directory Magento{
+	wget https://getcomposer.org/download/1.9.1/composer.phar
+	php -d allow_url_fopen=on composer.phar update
+}
+
+Bat dau composer update
+
+Update xong chuyen sang php74
+change default version php from php73 -> php74
+
+delete old recaptcha_key{
+	bin/magento config:set recaptcha_frontend/type_recaptcha_v3/public_key ***redacted***
+	bin/magento config:set recaptcha_frontend/type_recaptcha_v3/private_key ***redacted***
+	bin/magento config:set recaptcha_backend/type_recaptcha_v3/public_key ***redacted***
+	bin/magento config:set recaptcha_backend/type_recaptcha_v3/private_key ***redacted***
+	bin/magento cache:flush
+	bin/magento maintenance:disable
+
+	The previous version of reCaptcha, msp/recaptcha, stored the keys in plain text. It appears that the migration to the replacement magento modules copies the keys to the new core_config_data paths. However these are configured to be encrypted. So, when 2.4.x loads these values and decrypts them, the result is the malformed UTF-8 in your error.
+
+	Deleting and re-saving the keys (for all stores) should resolve the problem
+}
+
+app/design/frontend/Bss/Mica/Magento_Checkout/web/js/view/minicart.js missing{
+	getCartParamUnsanitizedHtml: function (name) {
+            if (!_.isUndefined(name)) {
+                if (!this.cart.hasOwnProperty(name)) {
+                    this.cart[name] = ko.observable();
+                }
+            }
+
+            return this.cart[name]();
+        },
+}
+
+Install dpkg {
+	sudo yum repolist
+	sudo yum install dpkg-devel dpkg-dev
+}
+
+
+Fix file Nwdthemes\Revslider\Model\Revslider\RSColorEasing.php line 216{
+	return 0===$n?$t:($n===$u?$t+$e:(($n/=$u/2)<1?$e/2*pow(2,10*($n-1))+$t:($e/2*(2-pow(2,-10*--$n))+$t)));
+}
+
+app/design/frontend/Bss/Mica/Magento_Catalog/templates/product/view/gallery.phtml  --> default
