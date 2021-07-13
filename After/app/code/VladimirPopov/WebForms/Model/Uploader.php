@@ -5,6 +5,13 @@ namespace VladimirPopov\WebForms\Model;
 class Uploader {
 
     const UPLOAD_DIR = 'webforms/upload';
+	
+	/**
+     * Media directory object (writable).
+     *
+     * @var \Magento\Framework\Filesystem\Directory\WriteInterface
+     */
+    protected $mediaDirectory;
 
     protected $_result;
 
@@ -15,11 +22,13 @@ class Uploader {
     protected $random;
 
     public function __construct(
+		\Magento\Framework\Filesystem $filesystem,
         \Magento\Store\Model\StoreManager $storeManager,
         \VladimirPopov\WebForms\Model\FileFactory $fileFactory,
         \Magento\Framework\Math\Random $random
     )
     {
+		$this->mediaDirectory = $filesystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
         $this->storeManager = $storeManager;
         $this->fileFactory = $fileFactory;
         $this->random = $random;
@@ -48,6 +57,7 @@ class Uploader {
 
     public function getUploadDir()
     {
+		//return $this->mediaDirectory->getAbsolutePath(self::getPath());
         return $this->storeManager->getStore($this->getResult()->getStoreId())->getBaseMediaDir() . '/' . self::getPath();
     }
 
@@ -72,7 +82,7 @@ class Uploader {
                 $size = filesize($file['tmp_name']);
                 $mime = self::getMimeType($file['tmp_name']);
 
-                $success = $uploader->save($this->getUploadDir(), $tmp_name);
+                $success = $uploader->save('pub/'.$this->getUploadDir(), $tmp_name);
 
                 if ($success) {
                     /** @var \VladimirPopov\WebForms\Model\File $model */
