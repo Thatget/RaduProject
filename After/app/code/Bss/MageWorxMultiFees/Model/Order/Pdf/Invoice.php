@@ -4,9 +4,17 @@ namespace Bss\MageWorxMultiFees\Model\Order\Pdf;
 
 class Invoice extends \Magento\Sales\Model\Order\Pdf\Invoice
 {
+	
+	/**
+	 * @var \Magento\Framework\Locale\ResolverInterface
+	 */
+	protected $_localeResolver;
+
 	private $feeHelper;
 
-	public function __construct(
+public function __construct(
+		\Magento\Framework\Locale\ResolverInterface $localeResolver,
+		\MageWorx\MultiFees\Helper\Data $feeHelper,
         \Magento\Payment\Helper\Data $paymentData,
         \Magento\Framework\Stdlib\StringUtils $string,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
@@ -18,26 +26,13 @@ class Invoice extends \Magento\Sales\Model\Order\Pdf\Invoice
         \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
         \Magento\Sales\Model\Order\Address\Renderer $addressRenderer,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Framework\Locale\ResolverInterface $localeResolver,
-        \MageWorx\MultiFees\Helper\Data $feeHelper,
+        \Magento\Store\Model\App\Emulation $appEmulation,
         array $data = []
-    ) {
-    	$this->feeHelper = $feeHelper;
-        parent::__construct(
-            $paymentData,
-            $string,
-            $scopeConfig,
-            $filesystem,
-            $pdfConfig,
-            $pdfTotalFactory,
-            $pdfItemsFactory,
-            $localeDate,
-            $inlineTranslation,
-            $addressRenderer,
-            $storeManager,
-            $localeResolver,
-            $data
-        );
+    )
+    {
+		$this->_localeResolver = $localeResolver;
+		$this->feeHelper = $feeHelper;
+        parent::__construct($paymentData, $string, $scopeConfig, $filesystem, $pdfConfig, $pdfTotalFactory, $pdfItemsFactory, $localeDate, $inlineTranslation, $addressRenderer, $storeManager, $appEmulation, $data);
     }
 
 	public function getPdf($invoices = [])
